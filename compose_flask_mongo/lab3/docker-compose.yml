@@ -1,7 +1,8 @@
 version: '3'
-
 services:
-    app:
+    flask:
+        container_name: flask-app
+        image: flask
         build: .
         command: python -u app.py
         ports:
@@ -9,9 +10,12 @@ services:
         volumes:
             - .:/app
         links:
-            - db
-    db:
-        image: mongo:latest
+            - mongo
+        networks:
+            - backend
+    mongo:
+        container_name: mongo-db
+        image: mongo
         hostname: mongodb
         environment:
             - MONGO_INITDB_DATABASE=account_user
@@ -21,4 +25,9 @@ services:
             - ./init-db.js:/docker-entrypoint-initdb.d/init-db.js:ro
         ports:
             - 27017:27017
-
+        networks:
+            - backend
+            
+networks:
+  backend:
+    name: mongo-flask-network

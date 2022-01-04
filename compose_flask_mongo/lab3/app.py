@@ -1,5 +1,6 @@
-from flask import Flask, jsonify
+from flask import Flask, request, jsonify
 from pymongo import MongoClient
+
 from settings import MONGO_HOST, MONGO_PORT, MONGO_DB_NAME, MONGO_DB_USERNAME, MONGO_DB_PASSWOR
 
 
@@ -24,12 +25,28 @@ def ping_server():
 
 
 @app.route('/users')
-def get_stored_animals():
+def get_stored_users():
     db = get_db()
     _users = db.users.find()
-    users = [{"id": user["id"], "name": user["name"], "address": user["address"]} for user in _users]
-    
+    users = [{"name": user["name"], "address": user["address"]} for user in _users]
     return jsonify({"users": users})
+
+
+@app.route('/users', methods=['POST'])
+def create_user():
+    data = request.get_json(force=True)
+    user = {
+        'name': data['name'],
+        'address': data['address']
+    }
+    db = get_db()
+    db.users.insert_one(user)
+
+    return jsonify(
+        status=True,
+        message='User saved successfully!'
+    ), 201
+
 
 if __name__=='__main__':
     app.run(host="0.0.0.0", port=5000)

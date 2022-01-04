@@ -2,6 +2,7 @@
 
 ## Lab1 - Create the Mongo Env with docker run cmd
 
-## Lab2 - Create the Mongo Env with docker-compose.yml
+## Lab2 - Create the Mongo Env in docker-compose.yml
 
-## Lab3 - not working...
+
+## Lab3 - Create the Mongo + Flask Env in docker-compose.yml

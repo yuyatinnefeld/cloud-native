@@ -1,9 +1,20 @@
 # Docker Learning
 
+## Basics
+- Concept
+- Volumes
+- Network
+
 ## Docker Compose
+- Flask + Redit
+- Flask + Postgres
+- Flask + Mongo DB
+- FastAPI + Postgres
 
-### Flask + Redit
+## Docker Compose + Deploy
+- Artifact Registry (GCP)
+- Elastic Container Registry (AWS)
 
-### Flask + Postgres
-
-### FastAPI + Postgres
+## Docker Compose + CI/CD Pipeline
+- Github Actions
+- Gitlab Runner

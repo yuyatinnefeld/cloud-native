@@ -6,7 +6,10 @@ services:
     ports:
       - 8888:8888
     volumes:
-      - jupyter-data:/home/jovyan/work
+      - jupyter-data:/home/jovyan
+    environment:
+      JUPYTER_ENABLE_LAB: "yes"
+    command: "start-notebook.sh --NotebookApp.token='yuya' --NotebookApp.password='password'"
 
 volumes:
   jupyter-data:

@@ -11,7 +11,6 @@ screen ~/Library/Containers/com.docker.docker/Data/vms/0/tty
 # check the volume data
 docker volume ls
 
-
 # clean up the volumes
 docker volume prune
 

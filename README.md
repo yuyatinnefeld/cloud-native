@@ -1,6 +1,6 @@
-# Docker Learning
+# Container Technology (Docker + K8s)
 
-## Basics
+## Docker Basics
 - Concept
 - Volumes
 - Network
@@ -18,3 +18,7 @@
 ## Docker Compose + CI/CD Pipeline
 - Github Actions
 - Gitlab Runner
+
+## Kubernetes
+- Kubectl
+- YAML Configuration

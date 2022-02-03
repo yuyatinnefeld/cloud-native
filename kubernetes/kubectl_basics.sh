@@ -43,3 +43,4 @@ kubectl delete deployment ${DEPLOYMENT_NAME}
 FILE_NAME="nginx-deployment.yaml"
 touch ${FILE_NAME}
 kubectl apply -f ${FILE_NAME}
+kubectl delete -f ${FILE_NAME}

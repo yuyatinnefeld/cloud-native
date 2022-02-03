@@ -2,18 +2,20 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nginx-deployment
+  labels:
+    app: my-nginx
 spec:
   selector:
     matchLabels:
-      app: nginx
-  replicas: 2 # tells deployment to run 2 pods matching the template
+      app: my-nginx
+  replicas: 2
   template:
     metadata:
       labels:
-        app: nginx
+        app: my-nginx
     spec:
       containers:
-      - name: nginx
+      - name: my-nginx
         image: nginx:1.14.2
         ports:
-        - containerPort: 80
+        - containerPort: 8080

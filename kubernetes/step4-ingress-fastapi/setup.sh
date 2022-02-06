@@ -35,11 +35,14 @@ kubectl describe pod helloworld-7767c4dd-ckntl
 kubectl logs helloworld-7767c4dd-ckntl
 
 # 7 cleanup
+kubectl delete ingrsess --all
+vi /etc/hosts
 kubectl delete pods --all
 kubectl delete services --all
 kubectl delete deployments --all
 kubectl delete secrets --all
-kubectl delete ingrsess --all
-vi /etc/hosts
-
 kubectl get all
+
+kubens
+minikube addons disable ingress
+kubens

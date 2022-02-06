@@ -44,9 +44,14 @@ kubectl version
 - ReplicaSet manages a Pod
 - Pod is an abstraction of container
 
-### Setup
-```bash
-./kubctl_basics.sh
+### Basics
+- step1-nginx 
 
-```
+### Multi Services & Secrets
+- step2-multi-service-mongodb
 
+### Namespace
+- step3-namespace-postgres
+
+### Ingress
+- step4-ingress-fastapi

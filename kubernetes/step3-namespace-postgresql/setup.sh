@@ -1,5 +1,4 @@
 # 1 create a new namespace
-kubectl create namespace my-namespace
 kubectl create namespace postgres-namespace
 kubectl get namespace
 
@@ -19,18 +18,32 @@ kubectl apply -f storage.yaml
 # 6 create pods & service
 kubectl apply -f postgres.yaml 
 
-# 7 connect to postgresql
+# 7 check port for the postgres conn
 kubectl describe service postgres-service
 # We need to use port 30001 (nodePort) to connect to PostgreSQL from machine/node
 
-# 8 install psql
+# 8 connect postgres (option 1)
 brew install postgresql
 brew services start postgresql
-
-# 9 add postgres-host and minikube ip in host mapping list
+minikube ip
 vi /etc/hosts
 192.168.64.2    postgres-host
 psql -h postgres-host -U admin --password -p 30001 postgresdb
+
+# 9 connect postgres (option 2)
+minikube ip
+export HOST="192.168.64.3" #here minikube ip
+export PASSWORD="pwd"
+export USERNAME="admin"
+
+kubectl describe service postgres-service
+# We need to use port 30001 (nodePort) to connect to PostgreSQL from machine/node
+
+kubectl run postgresql-postgresql-client --rm --tty -i --restart='Never' \
+    --namespace flask-postgresql \
+    --image bitnami/postgresql \
+    --env="PGPASSWORD=${PASSWORD}" \
+    --command -- psql -h ${HOST} -U ${USERNAME} --password -p 30001 postgresdb
 
 # 10 clean up
 brew services stop postgresql

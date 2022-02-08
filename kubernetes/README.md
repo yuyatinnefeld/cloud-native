@@ -21,7 +21,6 @@ brew install hyperkit
 
 # kubectl is also pre-installed
 brew install minikube
-
 ```
 ## Start
 ```bash
@@ -33,7 +32,12 @@ minikube start --vm-driver=hyperkit
 # check the node-cluster
 kubectl get nodes
 minikube status
-kubectl version
+minikube start --vm-driver=hyperkit
+
+# reset
+minikube stop
+minikube delete --all
+minikube start
 ```
 
 ## Kubectl
@@ -46,12 +50,10 @@ kubectl version
 
 ### Basics
 - step1-nginx 
-
-### Multi Services & Secrets
 - step2-multi-service-mongodb
-
-### Namespace
 - step3-namespace-postgres
-
-### Ingress
 - step4-ingress-fastapi
+- step5-k8s-dashboard
+- step6-ingress-flask-postgresql
+- step7-helm
+

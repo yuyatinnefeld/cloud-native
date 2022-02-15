@@ -1,10 +1,9 @@
 # GKE (Google Kubernetes Engine)
 
-## Basics 1
+# step1 - Basics
 ./step1
-
-## Basics 2
+# step2 - Managing Deployments Using Kubernetes Engine
 ./step2
 
-## Basics 3
+# step3 - Continuous Delivery with Jenkins in Kubernetes Engine
 ./step3

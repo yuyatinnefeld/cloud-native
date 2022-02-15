@@ -21,3 +21,6 @@ kubectl get services
 
 EXTERNAL_IP=34.77.134.247
 curl http://${EXTERNAL_IP}:80
+
+
+        

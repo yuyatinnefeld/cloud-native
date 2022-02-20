@@ -6,6 +6,7 @@ helm repo list
 
 # search repo
 helm search hub mongodb
+helm search repo redis
 
 # we will use this on
 https://artifacthub.io/packages/helm/bitnami/mongodb
@@ -16,6 +17,7 @@ helm repo add bitnami https://charts.bitnami.com/bitnami
 
 # search added repo
 helm search repo bitnami/mongodb
+helm search repo redis
 
 
 # install mongodb

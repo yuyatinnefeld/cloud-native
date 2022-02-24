@@ -1,4 +1,4 @@
-# gitlab (github) setup
+# gitlab (public access)
 mkdir argocd-app-config && cd argocd-app-config
 mkdir dev
 touch dev/deployment.yaml
@@ -6,7 +6,7 @@ touch dev/service.yaml
 git init
 git add .
 git commit -m "initial setup"
-git remote add gitlab git@gitlab.com:yt-learning/argocd-app-config.git
+git remote add gitlab git@gitlab.com:argocd-app-config.git
 git push gitlab master
 
 # create application.yaml

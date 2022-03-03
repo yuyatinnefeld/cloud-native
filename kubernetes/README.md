@@ -32,12 +32,13 @@ minikube start --vm-driver=hyperkit
 # check the node-cluster
 kubectl get nodes
 minikube status
-minikube start --vm-driver=hyperkit
+minikube start
 
 # reset
 minikube stop
 minikube delete --all
 minikube start
+minikube dashboard
 ```
 
 ## Kubectl
@@ -49,6 +50,7 @@ minikube start
 - Pod is an abstraction of container
 
 ### Basics
+```bash
 - step1-nginx 
 - step2-multi-service-mongodb
 - step3-namespace-postgres
@@ -56,4 +58,16 @@ minikube start
 - step5-k8s-dashboard
 - step6-ingress-flask-postgresql
 - step7-helm
+```
 
+### GKE
+```bash
+- step1 - Basics
+- step2 - Managing Deployments Using Kubernetes Engine
+- step3 - Continuous Delivery with Jenkins in Kubernetes Engine
+- step4 - Wordpress
+- Step5 - Nginx Ingress Controller
+- step6 - Distributed Load Testing
+- step7 - Version API 
+- step8 - MongoDB in k8s with StatefulSets
+```

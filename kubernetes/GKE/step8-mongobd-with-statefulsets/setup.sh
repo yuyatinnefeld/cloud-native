@@ -1,4 +1,4 @@
-# Cloud Vision API from a Kubernetes Cluster
+# MongDB Replica with StatefulSet
 
 # Objectives
 

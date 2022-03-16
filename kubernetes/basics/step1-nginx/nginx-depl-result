@@ -5,14 +5,14 @@ metadata:
     deployment.kubernetes.io/revision: "1"
     kubectl.kubernetes.io/last-applied-configuration: |
       {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"labels":{"app":"my-nginx"},"name":"nginx-deployment","namespace":"default"},"spec":{"replicas":2,"selector":{"matchLabels":{"app":"my-nginx"}},"template":{"metadata":{"labels":{"app":"my-nginx"}},"spec":{"containers":[{"image":"nginx:1.14.2","name":"my-nginx","ports":[{"containerPort":8080}]}]}}}}
-  creationTimestamp: "2022-02-03T07:06:26Z"
+  creationTimestamp: "2022-03-16T13:02:59Z"
   generation: 1
   labels:
     app: my-nginx
   name: nginx-deployment
   namespace: default
-  resourceVersion: "9399"
-  uid: e1f93140-0657-481c-a28d-6b91e85aa4de
+  resourceVersion: "39452"
+  uid: c447fed9-4463-4c4c-9a02-241cdd2006aa
 spec:
   progressDeadlineSeconds: 600
   replicas: 2
@@ -49,15 +49,15 @@ spec:
 status:
   availableReplicas: 2
   conditions:
-  - lastTransitionTime: "2022-02-03T07:06:28Z"
-    lastUpdateTime: "2022-02-03T07:06:28Z"
+  - lastTransitionTime: "2022-03-16T13:03:23Z"
+    lastUpdateTime: "2022-03-16T13:03:23Z"
     message: Deployment has minimum availability.
     reason: MinimumReplicasAvailable
     status: "True"
     type: Available
-  - lastTransitionTime: "2022-02-03T07:06:26Z"
-    lastUpdateTime: "2022-02-03T07:06:28Z"
-    message: ReplicaSet "nginx-deployment-7b7b7fb457" has successfully progressed.
+  - lastTransitionTime: "2022-03-16T13:02:59Z"
+    lastUpdateTime: "2022-03-16T13:03:23Z"
+    message: ReplicaSet "nginx-deployment-67bd6cd66c" has successfully progressed.
     reason: NewReplicaSetAvailable
     status: "True"
     type: Progressing

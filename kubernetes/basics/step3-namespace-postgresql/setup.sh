@@ -32,7 +32,7 @@ psql -h postgres-host -U admin --password -p 30001 postgresdb
 
 # 9 connect postgres (option 2)
 minikube ip
-export HOST="192.168.64.3" #here minikube ip
+export HOST="192.168.64.8" #here minikube ip
 export PASSWORD="pwd"
 export USERNAME="admin"
 
@@ -40,7 +40,7 @@ kubectl describe service postgres-service
 # We need to use port 30001 (nodePort) to connect to PostgreSQL from machine/node
 
 kubectl run postgresql-postgresql-client --rm --tty -i --restart='Never' \
-    --namespace flask-postgresql \
+    --namespace postgres-namespace \
     --image bitnami/postgresql \
     --env="PGPASSWORD=${PASSWORD}" \
     --command -- psql -h ${HOST} -U ${USERNAME} --password -p 30001 postgresdb

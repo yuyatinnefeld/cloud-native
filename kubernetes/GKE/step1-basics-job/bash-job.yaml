@@ -1,0 +1,14 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: simple-bash-job
+spec:
+  template:
+    spec:
+      containers:
+      - name: busybox
+        image: busybox
+        args:
+        - echo
+        - "Hi"
+      restartPolicy: OnFailure

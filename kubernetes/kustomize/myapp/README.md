@@ -8,6 +8,7 @@ Kustomize is a tool for customizing Kubernetes configurations. It has the follow
 - kustomize: easy to customize config
 - helm: great to standardize with template
 - helm: easy to manage
+- helm: provide repo (life cycle)
 
 ## run
 ```bash

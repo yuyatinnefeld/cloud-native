@@ -20,3 +20,6 @@ kubectl get service
 kubectl delete -k myapp/overlays/dev
 
 ```
+
+## Details
+https://kubernetes.io/docs/tasks/manage-kubernetes-objects/kustomization/

@@ -6,8 +6,17 @@ kubens
 # add repo
 helm repo add bitnami https://charts.bitnami.com/bitnami
 
+# install 
+helm install <./values.yaml> <release-name> <myrepo/mychart>
+
 # install mongodb
 helm install mongodb-release bitnami/mongodb 
+
+# update chart
+helm upgrade
+
+# reset
+helm rollback
 
 # get pwd
 export MONGODB_ROOT_PASSWORD=$(kubectl get secret --namespace mongodb mongodb-release -o jsonpath="{.data.mongodb-root-password}" | base64 --decode)

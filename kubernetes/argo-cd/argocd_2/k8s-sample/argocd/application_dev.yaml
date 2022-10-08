@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: wordpress-dev
+  namespace: argocd
+spec:
+  destination:
+    name: ""
+    namespace: dev
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: wordpress/overlays/dev
+    repoURL: https://gitlab.com/cloudnativetips/cd-sample.git
+    targetRevision: main
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - validate=true
+      - CreateNamespace=true
+      - PruneLast=false
+      - Replace=false
+      - ApplyOutOfSyncOnly=false
+      - PrunePropagationPlocy=foreground

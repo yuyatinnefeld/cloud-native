@@ -10,4 +10,14 @@ cat pod_1.yaml
 
 # you can define flexible with node affinity (select not small size node)
 cat pod_2.yaml
+
+# create deployment "red" which will be triggerd only with color=red
+kubectl create deployment red --image=nginx --replicas=3 --dry-run=client -o yaml > red.yaml
+
+# update the deployment with node affinity
+vi red.yaml
+
+# deploy
+kubectl create -f red.yaml
+
 ```

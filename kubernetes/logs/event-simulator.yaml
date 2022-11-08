@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: event-simulator-pod 
+spec:
+  containers:
+  - name: event-simulator-container-123
+    image: kodekloud/event-simulator
+  - name: nginx-container
+    image: nginx

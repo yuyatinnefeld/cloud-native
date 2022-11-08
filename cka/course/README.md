@@ -10,6 +10,8 @@
 kubectl run redis --image=redis --dry-run=client -o yaml > redis.yaml
 kubectl create -f redis.yaml
 
+k create -f redis.yaml
+
 # check the node
 kubectl get pods -o wide
 
@@ -20,6 +22,9 @@ ubectl get pods | grep ^redis
 kubectl create -f rc-deploy.yaml
 kubeclt get pods
 kubectl get replicationcontroller
+
+# delete running pod and create a new pod with the configration
+kubectl replace --force -f pod.yaml
 ```
 
 ### k8s Imperative vs Declarative 
@@ -34,7 +39,11 @@ kubeclt replace -f nginx.yaml
 # Declarative way
 
 kubeclt apply -f nginx.yaml
+```
 
-
+### Create Static pods
+```bash
+cd /etc/kubernetes/manifests
+vi pod.yaml
 
 ```

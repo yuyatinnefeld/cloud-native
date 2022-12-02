@@ -31,7 +31,10 @@ kubectl run nginx --image=nginx --command  -- <cmd> <arg1> <arg2>
 # Environment
 
 ```bash
-# config map (inmperative way)
+# go to the project
+cd simple-webapp-color
+
+# config map with inmperative way
 kubectl create configmap <CONFIG-NAME> --from-literal=<KEY>=<VALUE>
 # example
 kubectl create configmap app-config --from-literal=APP_COLOR=blue --from-literal=APP_MODE=prod
@@ -39,4 +42,16 @@ kubectl create configmap app-config --from-literal=APP_COLOR=blue --from-literal
 # config map with file
 kubectl create config app-config --from-file=app_config.properties
 
+
+# config map with declarative way
+kubectl create -f config-map.yaml
+
+
+# view config maps
+kubectl get configmaps
+kubectl describe configmaps
+
+
+# deploy pod
+kubectl create -f pod-configmap.yaml
 ```

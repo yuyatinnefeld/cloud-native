@@ -1,6 +1,9 @@
  ## container
 
 ```bash
+#start container run time
+colima start
+
 # define container name
 docker run --name <Custom Container Name> <Image Name>
 

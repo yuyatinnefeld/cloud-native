@@ -55,3 +55,17 @@ kubectl describe configmaps
 # deploy pod
 kubectl create -f pod-configmap.yaml
 ```
+
+## Multi Pods Pattern
+
+### Sidecar Pattern
+An extra container in your pod to enhance or extend the functionality of the main container.
+
+
+### Adapter Pattern
+A container that transform output of the main container.
+
+
+### Ambassador Pattern
+A container that proxy the network connection to the main container.
+

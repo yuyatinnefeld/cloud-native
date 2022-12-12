@@ -56,16 +56,22 @@ kubectl describe configmaps
 kubectl create -f pod-configmap.yaml
 ```
 
-## Multi Container Pattern
+## Multi Container Design Pattern
 
 ### Sidecar Pattern
-An extra container in your pod to enhance or extend the functionality of the main container.
-
-
-### Adapter Pattern
-A container that transform output of the main container.
-
+- An extra container in your pod to enhance or extend the functionality of the main container.
+- ex. Web application and Logging agent
+- Logging container is expected to stay alive as long as the web application is running.
 
 ### Ambassador Pattern
-A container that proxy the network connection to the main container.
+- A container that proxy the network connection to the main container.
+- ex. twemproxy
+
+### Adapter Pattern
+- A container that transform output of the main container.
+- ex. redis exporter, mysql-healthcheck
+
+### init Container Pattern
+- a process that runs to completion in a container. 
+- inital binary from, external service or database setup that will be up before the main application starts
 

@@ -56,7 +56,7 @@ kubectl describe configmaps
 kubectl create -f pod-configmap.yaml
 ```
 
-## Multi Pods Pattern
+## Multi Container Pattern
 
 ### Sidecar Pattern
 An extra container in your pod to enhance or extend the functionality of the main container.

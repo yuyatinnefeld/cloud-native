@@ -81,3 +81,36 @@ kubectl uncordon <node-to-uncordon>
 
 ### Info
 https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/
+
+
+
+## Backup
+
+### Option 1 - backup resource config
+```bash
+kubectl get all --all-namespaces -o yaml > all-deploy-setup.yaml
+```
+
+### Option 2 - backup etcd cluster
+```bash
+# save the config
+ETCDCTL_API=3 etcdctl snapshot save snapshot.db
+
+# view state
+ETCDCTL_API=3 etcdctl snapshot status snapshot.db
+
+# restore the data
+service kube-apiserver stop
+
+export RESTORE_PATH="/var/lib/etc-from-backup"
+
+ETCDCTL_API=3 etcdctl snapshot restore snapshot.db --data-dir $RESTORE_PATH
+
+# edit the etcd.service file
+
+# restart
+systemctl daemon-reload
+service etcd restart
+service kube-apiserver start
+
+```

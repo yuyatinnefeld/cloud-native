@@ -55,10 +55,7 @@ kubectl drain <node-to-drain> --ignore-daemonsets
 
 # verify
 kubectl get nodes
-```
-- 3.2 go to worker-node
 
-```bash
 # get the ip address
 k get nodes -o wide
 

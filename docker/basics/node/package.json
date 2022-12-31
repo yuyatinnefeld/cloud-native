@@ -1,0 +1,14 @@
+{
+    "name": "nodejs-demo",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "start": "node src/index.js"
+    },
+    "keywords": [],
+    "author": "Yuya",
+    "dependencies": {
+      "express": "^4.17.1"
+    }
+  }

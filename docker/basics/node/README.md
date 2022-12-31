@@ -1,7 +1,7 @@
 ```bash
 # setup env
 USER_NAME=yuyatinnefeld
-IMAGE_NAME=node-demo:v1.0.2
+IMAGE_NAME=node-demo:v1.1.3
 
 # build image
 docker build -t $USER_NAME/$IMAGE_NAME .

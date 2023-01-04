@@ -2,9 +2,8 @@
 
 ```bash
 cd java
-git clone https://github.com/spring-projects/spring-petclinic.git
-cd spring-petclinic
-touch Dockerfile.debug
+touch Dockerfile.debug_1
+touch Dockerfile.debug_2
 
 # use Helloworld.java file
 export IMAGE_NAME_1=yuyatinnefeld/java-docker:v1

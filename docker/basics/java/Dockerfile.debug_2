@@ -1,0 +1,7 @@
+FROM openjdk:17
+WORKDIR /app
+
+COPY HelloWorld.class ./
+
+# option 2 - use Class file
+CMD ["java", "HelloWorld"]

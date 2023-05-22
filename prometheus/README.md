@@ -1,10 +1,10 @@
 # Prometheus
 
 #### Grafana UI
-![Screenshot](grafana-k8s.png)
+![Screenshot](pics/grafana-k8s.png)
 
 #### Prometheus UI
-![Screenshot](prometheus-ui.png)
+![Screenshot](pics/prometheus-ui.png)
 
 
 ## About
@@ -96,7 +96,7 @@ http://localhost:3000
 # password: prom-operator (adminPassword from https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/values.yaml)
 ```
 
-![Screenshot](grafana-ui.png)
+![Screenshot](pics/grafana-ui.png)
 
 ### Prometheus UI Setup
 ```bash
@@ -109,7 +109,7 @@ PORT=9090
 kubectl port-forward $POD_NAME $PORT
 ```
 
-![Screenshot](prometheus-ui.png)
+![Screenshot](pics/prometheus-ui.png)
 
  
 ## Monitor MongoDB Service
@@ -164,7 +164,7 @@ http://localhost:9090
 
 ```
 #### now you can see exporter entpoint as target
-![Screenshot](mongodb-metrics-endpoint.png)
+![Screenshot](pics/mongodb-metrics-endpoint.png)
 
 
 ### Check the Mongodb metrics in Grafana

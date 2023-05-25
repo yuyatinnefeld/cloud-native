@@ -1,5 +1,9 @@
 # Prometheus
 
+## Architecture and Components
+![Screenshot](pics/architecture.png)
+
+
 ## Reference 
 - https://github.com/prometheus-community/helm-charts
 
@@ -39,7 +43,7 @@ Prometheus collects and stores its log-metrics as time series data, i.e. metrics
 
 `/grafana`
 
-## Track Applications
+## Scrape Applications with Exporter
 
 `/mongodb`
 

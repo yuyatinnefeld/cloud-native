@@ -1,10 +1,10 @@
 # Prometheus + Grafana
 
 #### Grafana UI
-![Screenshot](pics/grafana-k8s.png)
+![Screenshot](../pics/grafana-k8s.png)
 
 #### Prometheus UI
-![Screenshot](pics/prometheus-ui.png)
+![Screenshot](../pics/prometheus-ui.png)
 
 
 ## Prometheus + Grafana Setup
@@ -44,7 +44,7 @@ http://localhost:3000
 # password: prom-operator (adminPassword from https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/values.yaml)
 ```
 
-![Screenshot](pics/grafana-ui.png)
+![Screenshot](../pics/grafana-ui.png)
 
 ## PromQL in Grafana
 1. Menu > Explore

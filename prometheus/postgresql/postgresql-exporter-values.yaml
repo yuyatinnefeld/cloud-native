@@ -1,0 +1,4 @@
+serviceMonitor:
+  enabled: true
+  labels:
+    release: prometheus-operator

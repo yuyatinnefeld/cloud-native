@@ -28,7 +28,6 @@ kubectl describe pod $POD_NAME
 kubectl logs $POD_NAME -n prometheus -c grafana | grep user=
 kubectl logs $POD_NAME -n prometheus -c grafana | grep address=
 
-USER=admin
 PORT=3000
 
 # check the deployment-name

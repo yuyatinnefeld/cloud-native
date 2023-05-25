@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fastapi-deploy
+  labels:
+    app: fastapi-app
+    release: prometheus-operator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fastapi-app
+      release: prometheus-operator
+  template:
+    metadata:
+      labels:
+        app: fastapi-app
+        release: prometheus-operator
+    spec:
+      containers:
+        - name: fastapi-app
+          image: yuyatinnefeld/fastapi_prometheus:1.0.0
+          ports:
+            - containerPort: 8080
+          imagePullPolicy: Always
+          resources:
+            # You must specify requests for CPU to autoscale
+            # based on CPU utilization
+            requests:
+              cpu: "250m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fastapi-svc
+spec:
+  selector:
+    app: fastapi-app
+    release: prometheus-operator
+  ports:
+    - name: fastapi-web
+      protocol: "TCP"
+      port: 8080
+      targetPort: 8080
+  type: LoadBalancer
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: fastapi-servicemonitor
+  labels:
+    release: prometheus-operator
+spec:
+  selector:
+    matchLabels:
+      release: prometheus-operator
+  endpoints:
+  - port: fastapi-web

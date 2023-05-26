@@ -4,63 +4,58 @@ metadata:
   name: fastapi-deploy
   labels:
     app: fastapi-app
+    release: prometheus-operator
 spec:
+  replicas: 1
   selector:
     matchLabels:
       app: fastapi-app
-  replicas: 2
-  strategy:
-    type: RollingUpdate
+      release: prometheus-operator
   template:
     metadata:
       labels:
         app: fastapi-app
+        release: prometheus-operator
     spec:
       containers:
-        - name: fastapi-app-container
+        - name: fastapi-app
           image: yuyatinnefeld/fastapi_prometheus:1.0.0
-          imagePullPolicy: Always
           ports:
-            - name: fastapi-port
-              containerPort: 8080
+            - containerPort: 8080
+          imagePullPolicy: Always
           resources:
+            # You must specify requests for CPU to autoscale
+            # based on CPU utilization
             requests:
-              memory: 0.5Gi
-              cpu: "0.25"
-            limits:
-              memory: 1Gi
-              cpu: "0.5"
-
+              cpu: "250m"
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: fastapi-app-svc
-  labels:
-    app: fastapi-app
+  name: fastapi-svc
 spec:
   selector:
     app: fastapi-app
+    release: prometheus-operator
   ports:
-    - name: app
+    - name: fastapi-port
       protocol: "TCP"
       port: 8080
       targetPort: 8080
   type: LoadBalancer
-
 ---
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  name: fastapi-app-servicemonitor
-  # must by the same namespace that Prometheus is running in
-  namespace: monitoring
+  name: fastapi-servicemonitor
+  namespace: prometheus
   labels:
+    release: prometheus-operator
     app: fastapi-app
-    release: prometheus-stack
 spec:
   selector:
     matchLabels:
+      release: prometheus-operator
       app: fastapi-app
   endpoints:
     - path: metrics

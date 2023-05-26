@@ -47,4 +47,6 @@ Prometheus collects and stores its log-metrics as time series data, i.e. metrics
 
 `/mongodb`
 
-`/fastapi`
+`/fastapi-docker-compose`
+
+`/fastapi-k8s`

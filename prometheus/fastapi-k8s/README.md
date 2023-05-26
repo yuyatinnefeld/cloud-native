@@ -1,61 +1,50 @@
 # Prometheus FastAPI Instrumentator
 
+## Source
+- https://github.com/jeremyjordan/ml-monitoring
 
-## Test Application
+## Run Minikube
 ```bash
-# run the app
-uvicorn app.main:app --reload
-
-# check the metrics
-curl http://127.0.0.1:8000/metrics/
+minikube start --cpus 4 --memory 8192
 ```
-
-## Create and push Image into Docker Repo
+## Create Namespace
 ```bash
-colima start
-
-export IMAGE_NAME=fastapi_prometheus:1.0.0
-export REPO=yuyatinnefeld
-
-# push the image into the repo
-docker build -t $IMAGE_NAME .
-docker tag $IMAGE_NAME $REPO/$IMAGE_NAME
-docker push $REPO/$IMAGE_NAME
-
-# test
-docker run -p 8080:8080 --name fastapi-prom $REPO/$IMAGE_NAME
-curl http://127.0.0.1:8080/metrics/
-```
-
-## Create and deploy with kubernetes
-```bash
-vi fastapi-deploy.yaml
-
-NS=prometheus
+NS=monitoring
 kubectl create namespace $NS
 kubectl config set-context --current --namespace=$NS
-
-kubectl apply -f fastapi-deploy.yaml
-kubectl get all
-
-# test
-kubectl port-forward service/fastapi-svc 8080
-curl http://127.0.0.1:8080/metrics/
 ```
 
 ## Run Prometheus
 ```bash
-NS=prometheus
-
-# deploy prometheus
-helm install prometheus-operator prometheus-community/kube-prometheus-stack --namespace $NS
+helm install prometheus-stack prometheus-community/kube-prometheus-stack -n $NS
 kubectl get all --namespace $NS
+```
 
-# run grafana
-PORT=3000
+## Deploy FastAPI app
+```bash
+NS=monitoring
+kubectl apply -f fastapi-deploy.yaml -n $NS
+kubectl get all
 
-kubectl get deployment
-DEPLOYMENT_NAME=prometheus-operator-grafana
-kubectl port-forward deployment/$DEPLOYMENT_NAME $PORT
-# user=admin, pwd=prom-operator
+# test
+kubectl port-forward svc/fastapi-app-svc 8080
+curl http://127.0.0.1:8080/metrics/
+```
+
+## Run Grafana
+```bash
+kubectl port-forward svc/prometheus-stack-grafana 3000:80 -n $NS
+
+# PromQL
+- python_gc_collections_total
+- python_info
+```
+
+## Clean up
+
+```bash
+helm delete prometheus-stack
+kubeclt delete -f fast-deploy.yaml
+kubectl get all
+minikube delete --all
 ```

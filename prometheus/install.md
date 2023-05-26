@@ -27,7 +27,7 @@ helm install prometheus-operator prometheus-community/kube-prometheus-stack --na
 kubectl get crds
 
 # check the all components
-kubectl get all -n prometheus
+kubectl get all -n $NS
 ```
 
 ## Prometheus UI Setup

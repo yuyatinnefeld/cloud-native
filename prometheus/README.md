@@ -35,22 +35,16 @@ Prometheus collects and stores its log-metrics as time series data, i.e. metrics
 
 ## Getting Started
 
-### Setup Prometheus
+## Setup Prometheus
 
-`install.md`
+`/install`
 
-### Setup Grafana
+## Setup Grafana
 
 `/grafana`
 
-### Scrape Applications with Exporter
+## Scrape Applications with Exporter
 
 `/mongodb`
 
 `/fastapi`
-
-### Scrape FastAPI
-
-`/fastapi`
-
-`/fastapi-k8s`

@@ -26,8 +26,8 @@ helm install prometheus-operator prometheus-community/kube-prometheus-stack --na
 # check if the crds (custom resource definition) alertmanagers is installed
 kubectl get crds
 
-# check the all components
-kubectl get all -n prometheus
+# check the all k8s components
+kubectl get all --namespace $NS
 ```
 
 ## Prometheus UI Setup

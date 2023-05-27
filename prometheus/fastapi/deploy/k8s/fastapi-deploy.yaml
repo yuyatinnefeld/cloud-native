@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: fastapi-app-container
-          image: yuyatinnefeld/fastapi_prometheus:1.0.0
+          image: yuyatinnefeld/fastapi_prometheus:1.1.0
           imagePullPolicy: Always
           ports:
             - name: fastapi-port
@@ -42,7 +42,7 @@ spec:
   selector:
     app: fastapi-app
   ports:
-    - name: app
+    - name: fastapi-port
       protocol: "TCP"
       port: 8080
       targetPort: 8080

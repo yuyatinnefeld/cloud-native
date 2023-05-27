@@ -1,8 +1,5 @@
 # Prometheus FastAPI Instrumentator
 
-## Source
-- https://github.com/jeremyjordan/ml-monitoring
-
 ## Run Minikube
 ```bash
 minikube start --cpus 4 --memory 8192

@@ -39,6 +39,8 @@ kubectl apply -f service-monitor.yaml -n $NS
 NS=prometheus
 kubectl port-forward svc/prometheus-stack-grafana 3000:80 -n $NS
 
+# sometime takes 1-5 min to discover the target app
+
 # PromQL
 - process_cpu_seconds_total
 - python_gc_collections_total

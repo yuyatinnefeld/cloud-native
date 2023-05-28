@@ -7,21 +7,14 @@ minikube start --cpus 4 --memory 8192
 
 ## Create Namespace
 ```bash
-NS=monitoring
+NS=prometheus
 kubectl create namespace $NS
 kubectl config set-context --current --namespace=$NS
 ```
 
-## Run Prometheus
-```bash
-helm install prometheus-stack prometheus-community/kube-prometheus-stack -n $NS
-kubectl get all -n $NS
-```
-
 ## Deploy FastAPI app
 ```bash
-cd deploy/k8s
-kubectl apply -f fastapi-deploy.yaml -n $NS
+kubectl apply -f fastapi.yaml -n $NS
 kubectl get deploy
 kubectl get svc
 
@@ -30,9 +23,20 @@ kubectl port-forward svc/fastapi-app-svc 8080
 curl http://127.0.0.1:8080/metrics/
 ```
 
+## Run Prometheus
+```bash
+NS=prometheus
+helm install prometheus-stack prometheus-community/kube-prometheus-stack -n $NS
+kubectl get all -n $NS
+
+# deploy service monitor for scraping
+kubectl apply -f service-monitor.yaml -n $NS
+```
+
+
 ## Run Grafana
 ```bash
-NS=monitoring
+NS=prometheus
 kubectl port-forward svc/prometheus-stack-grafana 3000:80 -n $NS
 
 # PromQL

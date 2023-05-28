@@ -6,5 +6,5 @@
 ## Deploy - Docker Compose
 `/deploy/docker-compose`
 
-## Deploy - Kubernetes
-`/deploy/k8s`
+## Deploy - Helm Chart
+`/deploy/helm`

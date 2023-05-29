@@ -1,0 +1,6 @@
+alertmanager:
+  enabled: true
+  alertmanagerSpec:
+    alertmanagerConfigSelector: 
+      matchLabels:
+        resource: prometheus-alert

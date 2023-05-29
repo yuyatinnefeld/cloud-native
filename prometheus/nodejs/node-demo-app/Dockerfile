@@ -4,7 +4,7 @@ WORKDIR /usr/src/app
 
 COPY package*.json ./
 
-RUN npm install swagger-stats --save
+RUN npm install
 
 COPY . .
 

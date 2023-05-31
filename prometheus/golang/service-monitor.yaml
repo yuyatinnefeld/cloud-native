@@ -1,0 +1,19 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: golang-app-servicemonitor
+  # must by the same namespace that Prometheus is running in
+  namespace: prometheus
+  labels:
+    app: golang-app
+    release: prometheus-stack
+spec:
+  selector:
+    matchLabels:
+      app: golang-app
+  endpoints:
+    - path: metrics
+      port: http-port
+      interval: 15s
+  namespaceSelector:
+    any: true

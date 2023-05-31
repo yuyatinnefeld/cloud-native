@@ -3,10 +3,6 @@
 ## Architecture and Components
 ![Screenshot](pics/architecture.png)
 
-
-## Reference 
-- https://github.com/prometheus-community/helm-charts
-
 ## About
 Prometheus collects and stores its log-metrics as time series data, i.e. metrics information is stored with the timestamp at which it was recorded, alongside optional key-value pairs called labels.
 
@@ -35,16 +31,37 @@ Prometheus collects and stores its log-metrics as time series data, i.e. metrics
 
 ## Getting Started
 
-## Setup Prometheus
+### Setup Prometheus
 
-`/install`
+`/install.md`
 
-## Setup Grafana
+### Setup Grafana
 
 `/grafana`
 
-## Scrape Applications with Exporter
+### Scrape Applications with Exporter
 
-`/mongodb`
+`/exporter/mongodb`
 
-`/fastapi`
+`/exporter/postgresql`
+
+
+### Scrape Applications with Instrumentator
+
+`/instrumentator/golang`
+
+`/instrumentator/fastapi`
+
+`/instrumentator/nodejs`
+
+### Use Pushgateway
+
+`/pushgateway`
+
+### PromQL
+
+`/promql.md`
+
+### Exam Prep
+
+`/exam.md`

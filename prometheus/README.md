@@ -31,9 +31,13 @@ Prometheus collects and stores its log-metrics as time series data, i.e. metrics
 
 ## Getting Started
 
-### Setup Prometheus
+### Setup Prometheus with Docker-Compose
 
-`/install.md`
+`/simple-start`
+
+### Setup Prometheus with Helm Chart
+
+`/install-with-helm.md`
 
 ### Setup Grafana
 
@@ -51,6 +55,10 @@ Prometheus collects and stores its log-metrics as time series data, i.e. metrics
 `/instrumentator/golang`
 
 `/instrumentator/fastapi`
+
+`/instrumentator/nodejs`
+
+### Use Alertmanager
 
 `/instrumentator/nodejs`
 

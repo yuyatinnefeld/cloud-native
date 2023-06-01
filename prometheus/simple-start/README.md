@@ -1,4 +1,4 @@
-# Simple Prometheus Setup
+# Simple Prometheus Setup Guide
 
 ## Use Prometheus
 ```bash
@@ -70,4 +70,18 @@ open http://localhost:9090/alerts
 open http://localhost:9093/#/alerts
 
 docker-compose down
+```
+
+## Use PushGateway
+```bash
+cd pushgateway
+
+# run prometheus
+docker-compose up -d
+
+# run python app to push message
+python app.py
+
+# open prometheus and check batch job
+open http://localhost:9091/
 ```

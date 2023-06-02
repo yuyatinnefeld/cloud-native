@@ -2,11 +2,10 @@
 
 ## Topics
 
-- Docker Basics
-- Docker Compose
+- Docker 
 - Kubernetes / CKA
-- ELK
+- Prometheus (+ Grafana)
+- ELK Stack
 - GKE
 - Flux
 - ArgoCD
-- Prometheus (+ Grafana)

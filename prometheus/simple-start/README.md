@@ -6,7 +6,7 @@
 cd stepup
 
 # start servers
-docker-compose up
+docker-compose up -d
 
  # create metrics
 open http://localhost:9100/metrics

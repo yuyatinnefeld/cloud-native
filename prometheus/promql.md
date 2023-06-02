@@ -9,10 +9,40 @@
 - summaries
 
 ## Data Types
-- PromQL subsequently has four data types: Floats (mostly scalars), Range vectors, Instant vectors, Time
-- Floats Exp: `prometheus_http_requests_total{code=~"2.*", job="prometheus"}`
-- Instant Exp: `some_key {some_label="THATLABEL",another_label="THISLABEL"} [#value]` like `http_total_requests{job=”prometheus”, method=”post”, code=”404”} [5m]`
-- Range Exp: `<<metric name>>{<<label>>=”<<value>>”}[duration]` like `node_scrape_collector_duration_seconds{job=”node”}[2m]`
+- PromQL subsequently has four data types: Range vectors, Instant vectors, Scalar, String
+
+### Instant vector
+- a set of time series containing a SINGLE SAMPLE
+
+Exp: `<<metric name>>{<<label>>=”<<value>>”}` like `promhttp_metric_handler_requests_total{code="200",job="node"}`
+```bash
+# create metrics from node exporter vm
+curl http://localhost:9100/metrics
+
+# Instant Vector:
+curl 'http://localhost:9090/api/v1/query' \
+    --data 'query=promhttp_metric_handler_requests_total{code="200",job="node"}' | jq
+```
+
+### Range vector
+- a set of time series containing a RANGE OF DATA POINTS
+Exp: `<<metric name>>{<<label>>=”<<value>>”}[duration]` like `promhttp_metric_handler_requests_total{code="200",job="node"}[30s]`
+
+```bash
+# create metrics from node exporter vm
+curl http://localhost:9100/metrics
+
+# Range Vector:
+curl 'http://localhost:9090/api/v1/query' \
+    --data 'query=promhttp_metric_handler_requests_total{code="200",job="node"}[30s]' | jq
+```
+
+### Scalar
+- a simple numeric floating point value
+
+### String
+- a simple string value; currently unused
+
 
 ## PromQL Operators
 
@@ -85,7 +115,7 @@ log10(instant-vector)
 minute(some vector(time()) instant-vector)
 month(some vector(time()) instant-vector)
 predict_linear() #for use with gauge 
-rate(range-vector)
+rate(range-vector) # rate() only with counter
 resets(range-vector) #for use with counter metrics
 round((instant-vector, to_nearest=## scalar)
 scalar(instant-vector)
